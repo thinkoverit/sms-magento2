@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_submit_all_after">
+        <observer name="pixel6_sms_observer_new_order" instance="Pixel6\Sms\Observer\NewOrder"/>
+    </event>
+    <event name="sales_order_save_after">
+        <observer name="pixel6_sms_observer_order_cancelled" instance="Pixel6\Sms\Observer\OrderCancelled"/>
+        <observer name="pixel6_sms_observer_order_hold" instance="Pixel6\Sms\Observer\OrderHold"/>
+        <observer name="pixel6_sms_observer_order_un_hold" instance="Pixel6\Sms\Observer\OrderUnHold"/>
+    </event>
+    <event name="sales_order_invoice_pay">
+        <observer name="pixel6_sms_observer_invoice_pay" instance="Pixel6\Sms\Observer\InvoicePay"/>
+    </event>
+    <event name="customer_register_success">
+        <observer name="pixel6_sms_observer_register_success" instance="Pixel6\Sms\Observer\Registration"/>
+    </event>
+</config>

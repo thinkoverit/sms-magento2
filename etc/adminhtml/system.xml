@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <tab id="pixel6_sms" sortOrder="2000">
+            <label>Pixel6 SMS</label>
+        </tab>
+        <section id="pixel6_sms_configuration" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+
+            <label>Basic Configuration</label>
+            <tab>pixel6_sms</tab>
+            <resource>Pixel6_Sms::sms_config</resource>
+            <group id="basic_configuration" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Basic Configuration&nbsp;&nbsp;<i>Setting API Account</i>]]></label>
+                <field id="pixel6_username" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter API Username</label>
+                    <comment>Enter your SMS API Username</comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="pixel6_password" type="password" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter API Password</label>
+                    <comment>Enter your SMS API Password</comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="debug" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Debug Mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>required-entry</validate>
+                </field>
+            </group>
+        </section>
+        <section id="pixel6_sms_orders" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Order Notifications</label>
+            <tab>pixel6_sms</tab>
+            <resource>Pixel6_Sms::sms_config</resource>
+            <group id="new_order" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>When a New Order is Placed</label>
+                <field id="new_order_enabled" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Customer Notification</label>
+                    <comment>This option will send SMS when an Order is Placed</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="new_order_sender_id" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Sender ID</label>
+                    <comment>‘Company’ e.g. 'My Store’ (max: 11 alphanumeric characters. This is who the SMS will appear from when received)</comment>
+                    <tooltip>You can enter upto 11 digits or characters</tooltip>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-11</validate>
+                    <depends><field id="new_order_enabled">1</field></depends>
+                </field>
+                <field id="new_order_message" type="textarea" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Message</label>
+                    <comment>Your Message Content, (Max 918 characters. Text over 160 characters may incurs multiple credit charges)</comment>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-160</validate>
+                    <tooltip>Enter your default message. You can use {{firstname}} for Firstname, {{middlename}} for Middlename, {{lastname}} for Lastname, {{fax}} for Fax, {{postal}} for Post Code, {{city}} for City, {{email}} for EmailAddress and {{order_id}} for Order Number.</tooltip>
+                    <depends><field id="new_order_enabled">1</field></depends>
+                </field>
+
+
+            </group>
+            <group id="hold_order" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>When Order is Hold</label>
+                <field id="hold_order_enabled" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Customer Notification</label>
+                    <comment>This option will send SMS when an Order is Placed</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="hold_order_sender_id" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Sender ID</label>
+                    <comment>‘Company’ e.g. 'My Store’ (max: 11 alphanumeric characters. This is who the SMS will appear from when received)</comment>
+                    <tooltip>You can enter upto 11 digits or characters</tooltip>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-11</validate>
+                    <depends><field id="hold_order_enabled">1</field></depends>
+                </field>
+                <field id="hold_order_message" type="textarea" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Message</label>
+                    <comment>Your Message Content, (Max 918 characters. Text over 160 characters may incurs multiple credit charges)</comment>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-160</validate>
+                    <tooltip>Enter your default message. You can use {{firstname}} for Firstname, {{middlename}} for Middlename, {{lastname}} for Lastname, {{fax}} for Fax, {{postal}} for Post Code, {{city}} for City, {{email}} for EmailAddress and {{order_id}} for Order Number.</tooltip>
+                    <depends><field id="hold_order_enabled">1</field></depends>
+                </field>
+
+
+            </group>
+            <group id="unhold_order" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>When Order is Unhold</label>
+                <field id="unhold_order_enabled" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Customer Notification</label>
+                    <comment>This option will send SMS when an Order is Placed</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="unhold_order_sender_id" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Sender ID</label>
+                    <comment>‘Company’ e.g. 'My Store’ (max: 11 alphanumeric characters. This is who the SMS will appear from when received)</comment>
+                    <tooltip>You can enter upto 11 digits or characters</tooltip>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-11</validate>
+                    <depends><field id="unhold_order_enabled">1</field></depends>
+                </field>
+                <field id="unhold_order_message" type="textarea" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Message</label>
+                    <comment>Your Message Content, (Max 918 characters. Text over 160 characters may incurs multiple credit charges)</comment>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-160</validate>
+                    <tooltip>Enter your default message. You can use {{firstname}} for Firstname, {{middlename}} for Middlename, {{lastname}} for Lastname, {{fax}} for Fax, {{postal}} for Post Code, {{city}} for City, {{email}} for EmailAddress and {{order_id}} for Order Number.</tooltip>
+                    <depends><field id="unhold_order_enabled">1</field></depends>
+                </field>
+
+
+            </group>
+            <group id="cancelled_order" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>When Order is Cancelled</label>
+                <field id="cancelled_order_enabled" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Customer Notification</label>
+                    <comment>This option will send SMS when an Order is Placed</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cancelled_order_sender_id" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Sender ID</label>
+                    <comment>‘Company’ e.g. 'My Store’ (max: 11 alphanumeric characters. This is who the SMS will appear from when received)</comment>
+                    <tooltip>You can enter upto 11 digits or characters</tooltip>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-11</validate>
+                    <depends><field id="cancelled_order_enabled">1</field></depends>
+                </field>
+                <field id="cancelled_order_message" type="textarea" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Message</label>
+                    <comment>Your Message Content, (Max 918 characters. Text over 160 characters may incurs multiple credit charges)</comment>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-160</validate>
+                    <tooltip>Enter your default message. You can use {{firstname}} for Firstname, {{middlename}} for Middlename, {{lastname}} for Lastname, {{fax}} for Fax, {{postal}} for Post Code, {{city}} for City, {{email}} for EmailAddress and {{order_id}} for Order Number.</tooltip>
+                    <depends><field id="cancelled_order_enabled">1</field></depends>
+                </field>
+            </group>
+            <group id="invoiced_order" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>When Order is Invoiced</label>
+                <field id="invoiced_order_enabled" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Customer Notification</label>
+                    <comment>This option will send SMS when an Order is Placed</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="invoiced_order_sender_id" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Sender ID</label>
+                    <comment>‘Company’ e.g. 'My Store’ (max: 11 alphanumeric characters. This is who the SMS will appear from when received)</comment>
+                    <tooltip>You can enter upto 11 digits or characters</tooltip>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-11</validate>
+                    <depends><field id="invoiced_order_enabled">1</field></depends>
+                </field>
+                <field id="invoiced_order_message" type="textarea" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Message</label>
+                    <comment>Your Message Content, (Max 918 characters. Text over 160 characters may incurs multiple credit charges)</comment>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-160</validate>
+                    <tooltip>Enter your default message. You can use {{firstname}} for Firstname, {{middlename}} for Middlename, {{lastname}} for Lastname, {{fax}} for Fax, {{postal}} for Post Code, {{city}} for City, {{email}} for EmailAddress and {{order_id}} for Order Number.</tooltip>
+                    <depends><field id="invoiced_order_enabled">1</field></depends>
+                </field>
+            </group>
+            <group id="shipped_order" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>When Order is Shipped</label>
+                <field id="shipped_order_enabled" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Customer Notification</label>
+                    <comment>This option will send SMS when an Order is Placed</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="shipped_order_sender_id" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Sender ID</label>
+                    <comment>‘Company’ e.g. 'My Store’ (max: 11 alphanumeric characters. This is who the SMS will appear from when received)</comment>
+                    <tooltip>You can enter upto 11 digits or characters</tooltip>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-11</validate>
+                    <depends><field id="shipped_order_enabled">1</field></depends>
+                </field>
+                <field id="shipped_order_message" type="textarea" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Message</label>
+                    <comment>Your Message Content, (Max 918 characters. Text over 160 characters may incurs multiple credit charges)</comment>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-160</validate>
+                    <tooltip>Enter your default message. You can use {{firstname}} for Firstname, {{middlename}} for Middlename, {{lastname}} for Lastname, {{fax}} for Fax, {{postal}} for Post Code, {{city}} for City, {{email}} for EmailAddress and {{order_id}} for Order Number.</tooltip>
+                    <depends><field id="shipped_order_enabled">1</field></depends>
+                </field>
+            </group>
+        </section>
+        <section id="pixel6_sms_admins" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Admin Configuration</label>
+            <tab>pixel6_sms</tab>
+            <resource>Pixel6_Sms::sms_config</resource>
+            <group id="admin_configuration" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Admin Configuration</label>
+                <field id="admin_enabled" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Admin Notifications</label>
+                    <comment>This option will send SMS to the admin when an Order is Placed</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="admin_mobile" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Admin Mobile</label>
+                    <comment>Admin Mobile(s): Enter as many numbers as you like here, comma seperated if multiple e.g. 07700900000,07700900001</comment>
+                    <depends><field id="admin_enabled">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="new_order_admin_message" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Message for New Order</label>
+                    <comment>Your Message Content, (Max 918 characters. Text over 160 characters may incurs multiple credit charges)</comment>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-160</validate>
+                    <tooltip>Enter your default message. You can use {{firstname}} for Firstname, {{middlename}} for Middlename, {{lastname}} for Lastname, {{fax}} for Fax, {{postal}} for Post Code, {{city}} for City, {{email}} for EmailAddress and {{order_id}} for Order Number.</tooltip>
+                    <depends><field id="admin_enabled">1</field></depends>
+                </field>
+                <field id="hold_admin_message" type="textarea" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Message for Order Hold</label>
+                    <comment>Your Message Content, (Max 918 characters. Text over 160 characters may incurs multiple credit charges)</comment>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-160</validate>
+                    <tooltip>Enter your default message. You can use {{firstname}} for Firstname, {{middlename}} for Middlename, {{lastname}} for Lastname, {{fax}} for Fax, {{postal}} for Post Code, {{city}} for City, {{email}} for EmailAddress and {{order_id}} for Order Number.</tooltip>
+                    <depends><field id="admin_enabled">1</field></depends>
+                </field>
+                <field id="unhold_admin_message" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Message for Order UnHold</label>
+                    <comment>Your Message Content, (Max 918 characters. Text over 160 characters may incurs multiple credit charges)</comment>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-160</validate>
+                    <tooltip>Enter your default message. You can use {{firstname}} for Firstname, {{middlename}} for Middlename, {{lastname}} for Lastname, {{fax}} for Fax, {{postal}} for Post Code, {{city}} for City, {{email}} for EmailAddress and {{order_id}} for Order Number.</tooltip>
+                    <depends><field id="admin_enabled">1</field></depends>
+                </field>
+                <field id="cancelled_admin_message" type="textarea" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Message for Order Cancelled</label>
+                    <comment>Your Message Content, (Max 918 characters. Text over 160 characters may incurs multiple credit charges)</comment>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-160</validate>
+                    <tooltip>Enter your default message. You can use {{firstname}} for Firstname, {{middlename}} for Middlename, {{lastname}} for Lastname, {{fax}} for Fax, {{postal}} for Post Code, {{city}} for City, {{email}} for EmailAddress and {{order_id}} for Order Number.</tooltip>
+                    <depends><field id="admin_enabled">1</field></depends>
+                </field>
+                <field id="invoiced_admin_message" type="textarea" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Message for Invoice Created</label>
+                    <comment>Your Message Content, (Max 918 characters. Text over 160 characters may incurs multiple credit charges)</comment>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-160</validate>
+                    <tooltip>Enter your default message. You can use {{firstname}} for Firstname, {{middlename}} for Middlename, {{lastname}} for Lastname, {{fax}} for Fax, {{postal}} for Post Code, {{city}} for City, {{email}} for EmailAddress and {{order_id}} for Order Number.</tooltip>
+                    <depends><field id="admin_enabled">1</field></depends>
+                </field>
+                <field id="shipment_admin_message" type="textarea" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Message for Shipment Created</label>
+                    <comment>Your Message Content, (Max 918 characters. Text over 160 characters may incurs multiple credit charges)</comment>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-160</validate>
+                    <tooltip>Enter your default message. You can use {{firstname}} for Firstname, {{middlename}} for Middlename, {{lastname}} for Lastname, {{fax}} for Fax, {{postal}} for Post Code, {{city}} for City, {{email}} for EmailAddress and {{order_id}} for Order Number.</tooltip>
+                    <depends><field id="admin_enabled">1</field></depends>
+                </field>
+                <field id="register_admin_message" type="textarea" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter the Message for Customer Registration</label>
+                    <comment>Your Message Content, (Max 918 characters. Text over 160 characters may incurs multiple credit charges)</comment>
+                    <validate>required-entry validate-length minimum-length-1 maximum-length-160</validate>
+                    <tooltip>Enter your default message. You can use {{firstname}} for Firstname, {{middlename}} for Middlename, {{lastname}} for Lastname, {{customer_id}} for customer Id, {{shop_name} for store name, {{email}} for EmailAddress and {{created_at}} for registration date.</tooltip>
+                    <depends><field id="admin_enabled">1</field></depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

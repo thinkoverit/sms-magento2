@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+{{License}}
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Pixel6_Sms::pixel6" title="Pixel6 SMS" module="Pixel6_Sms" sortOrder="11" resource="Pixel6_Sms::pixel6"/>
+        
+
+        <add id="Pixel6_Sms::grid" title="SMS Log" module="Pixel6_Sms" sortOrder="20" parent="Pixel6_Sms::pixel6" 
+            action="pixel6_sms/grid" resource="Pixel6_Sms::add_row"/>
+  
+             
+        <add id="Pixel6_Sms::pixel6_head_config" title="Settings" module="Pixel6_Sms" sortOrder="40"
+             parent="Pixel6_Sms::pixel6" resource="Pixel6_Sms::pixel6"/>
+        <add id="Pixel6_Sms::config" title="Configuration" module="Pixel6_Sms" sortOrder="50"
+             action="adminhtml/system_config/edit/section/pixel6_sms_configuration"
+             resource="Pixel6_Sms::pixel6" parent="Pixel6_Sms::pixel6_head_config" />
+    </menu>
+</config>
